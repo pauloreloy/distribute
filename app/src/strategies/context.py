@@ -2,11 +2,14 @@
 from typing import Any  
 from src.strategies.entities.nuclea import Nuclea
 
+
 class Context:
+
 
     strategies = {
         "nuclea":   Nuclea
     }
+
 
     def __init__(self, strategy: Any) -> None:
         self.strategy = self.strategies[strategy]()
