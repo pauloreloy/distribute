@@ -1,41 +1,13 @@
 <O7DOC>
 	<HeaderCTC>
+		<NomeArq>ACTC101RET_20250208_00001</NomeArq>
 		<Versao>1.0</Versao>
 		<DtHrArq>20240701</DtHrArq>
 		<SeqArq>1</SeqArq>
 		<TpArq>1</TpArq>
 	</HeaderCTC>
-	<ACTC102>
-		<Grupo_ACTC102_PortlddAceita>
-			<IdentdPartAdmdo>1234567890</IdentdPartAdmdo>
-			<NUPortlddCTC>9876543210</NUPortlddCTC>
-			<IdentdIFPropnt>5432167890</IdentdIFPropnt>
-			<Grupo_ACTC102_IdentdContrto>
-				<CodContrtoOr>CONTRATO123</CodContrtoOr>
-				<CNPJBase_IFOrContrto>12345678</CNPJBase_IFOrContrto>
-				<TpContrto>0202</TpContrto>
-				<TpEnteCons>1</TpEnteCons>
-			</Grupo_ACTC102_IdentdContrto>
-			<Grupo_ACTC102_Cli>
-				<TpPessoa>F</TpPessoa>
-				<CNPJ_CPF>12345678901</CNPJ_CPF>
-				<NomeCli>Nome do Cliente</NomeCli>
-			</Grupo_ACTC102_Cli>
-			<Grupo_ACTC102_PropPortldd>
-				<DtRefSaldDevdrContb>20240701</DtRefSaldDevdrContb>
-				<VlrSaldDevdrContb>1000.00</VlrSaldDevdrContb>
-				<TxJurosNoml>12.00</TxJurosNoml>
-				<TxJurosEft>12.50</TxJurosEft>
-			</Grupo_ACTC102_PropPortldd>
-			<Grupo_ACTC102_EndCartaPortldd>
-				<LogradEndCartaPortldd>Rua Exemplo</LogradEndCartaPortldd>
-				<NumEndCartaPortldd>123</NumEndCartaPortldd>
-				<CidEndCartaPortldd>São Paulo</CidEndCartaPortldd>
-				<UFEndCartaPortldd>SP</UFEndCartaPortldd>
-				<CEPEndCartaPortldd>12345678</CEPEndCartaPortldd>
-			</Grupo_ACTC102_EndCartaPortldd>
-		</Grupo_ACTC102_PortlddAceita>
-		<Grupo_ACTC102_PortlddRecs>
+	<ACTC101RET>
+		<Grupo_ACTC101RET_PortlddRecs>
 			<IdentdPartAdmdo>1234567891</IdentdPartAdmdo>
 			<NUPortlddCTC>9876543211</NUPortlddCTC>
 			<IdentdIFPropnt>5432167891</IdentdIFPropnt>
@@ -63,6 +35,6 @@
 				<UFEndCartaPortldd>SP</UFEndCartaPortldd>
 				<CEPEndCartaPortldd>12345678</CEPEndCartaPortldd>
 			</Grupo_ACTC102_EndCartaPortldd>
-		</Grupo_ACTC102_PortlddRecs>
-	</ACTC102>
+		</Grupo_ACTC101RET_PortlddRecs>
+	</ACTC101RET>
 </O7DOC>

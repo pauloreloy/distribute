@@ -1,7 +1,11 @@
+from typing import Dict, Any
+import json
+
+
 class Utils:
 
 
-    def flatten_json(self, data):
+    def _flatten_json(self, data):
         result = {}
         def flatten(value, parent_key=''):
             if isinstance(value, dict):
@@ -23,11 +27,15 @@ class Utils:
         return result
 
 
-    def transform_json(self, data):
+    def flatten_json(self, data):
         transformed = {}
         for key, value in data.items():
             if isinstance(value, dict):
-                transformed[key] = self.flatten_json(value)
+                transformed[key] = self._flatten_json(value)
             else:
                 transformed[key] = value
         return transformed
+    
+
+    def log_output(self, message: dict) -> Any:
+        print(json.dumps(message, indent=4))

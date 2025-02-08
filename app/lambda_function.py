@@ -1,12 +1,14 @@
 import json
-from typing                 import Dict, Any
-from src.classes.business   import Business
-from src.adapter.aws        import AWS
+from typing                     import Dict, Any
+from src.decorators.exceptions  import exception_decorator
+from src.classes.business       import Business
+from src.adapter.aws.aws        import AWS
 
 
 aws = AWS()
 
 
+@exception_decorator
 def validate_event(event_record: Dict[dict, Any]) -> Any:
     if event_record.get("eventSource") == 'aws:s3':
         return Business(aws).process_s3_event(event_record)
