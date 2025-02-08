@@ -17,7 +17,7 @@ def filter_actc_keys(func):
         o7doc = data.get("O7DOC", {})
         header_pattern = re.compile(r"HeaderCTC.*$")
         actc_pattern = re.compile(r"ACTC\d{3}.*$")
-        header = {key: value for key, value in o7doc.items() if header_pattern.match(key)}
+        header = dict({key: value for key, value in o7doc.items() if header_pattern.match(key)})
         actc_data = {key: value for key, value in o7doc.items() if actc_pattern.match(key)}
         return func(self, actc_data, header)
     return wrapper

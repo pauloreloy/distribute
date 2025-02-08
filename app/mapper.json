@@ -1,13 +1,14 @@
 {
-    "CidEndCartaPortldd": "cidade_endeco_carta_portabiidade",
-    "NumEndCartaPortldd": "numero_endereco_carta",
-    "LogradEndCartaPortldd": "logradouro_endereco_carta",
-    "UFEndCartaPortldd": "uf_endereco_carta",
-    "CEPEndCartaPortldd": "cep_endereco_carta",
-    "IdentdPartAdmdo": "identificacao_participante_administrador",
-    "CodErro": "CodErro",
-    "Campo": "campo",
-    "Valor": "valor",
-    "Erro": "erro",
-    "Actc_Erros": "actc_erros"
+    "CidEndCartaPortldd":       "cidade_endeco_carta_portabiidade",
+    "NumEndCartaPortldd":       "numero_endereco_carta",
+    "LogradEndCartaPortldd":    "logradouro_endereco_carta",
+    "UFEndCartaPortldd":        "uf_endereco_carta",
+    "CEPEndCartaPortldd":       "cep_endereco_carta",
+    "IdentdPartAdmdo":          "identificacao_participante_administrador",
+    "CodErro":                  "CodErro",
+    "Campo":                    "campo",
+    "Valor":                    "valor",
+    "Erro":                     "erro",
+    "Actc_Erros":               "actc_erros",
+    "NUPortlddCTC":             "numero_portabilidade"
   }

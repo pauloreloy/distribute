@@ -20,7 +20,7 @@
 			<Grupo_ACTC102_Cli>
 				<TpPessoa>F</TpPessoa>
 				<CNPJ_CPF>12345678901</CNPJ_CPF>
-				<NomeCli>Nome do Cliente</NomeCli>
+				<NomeCli CodErro="ECTC002">Nome do Cliente</NomeCli>
 			</Grupo_ACTC102_Cli>
 			<Grupo_ACTC102_PropPortldd>
 				<DtRefSaldDevdrContb>20240701</DtRefSaldDevdrContb>
