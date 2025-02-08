@@ -2,7 +2,6 @@ import json
 from typing                 import Dict, Any
 from src.classes.business   import Business
 from src.adapter.aws        import AWS
-import memory_profiler
 
 
 aws = AWS()
@@ -13,7 +12,6 @@ def validate_event(event_record: Dict[dict, Any]) -> Any:
         return Business(aws).process_s3_event(event_record)
 
 
-@memory_profiler.profile
 def lambda_handler(event, context):
     if event.get("Records"):
         for event_record in event['Records']:

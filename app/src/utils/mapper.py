@@ -1,17 +1,16 @@
 import json
-
+from typing import Dict, Any
 
 class Mapper:
 
 
-    def __init__(self, data, mapper_file):
-        self.data = data
+    def __init__(self, actc_type, mapper_file):
         with open(mapper_file, 'r') as f:
             self.mapper = json.load(f)
     
 
-    def map_keys(self):
-        return self._map_recursive(self.data)
+    def map(self, data: Dict[dict, Any]) -> Dict[dict, Any]:
+        return self._map_recursive(data)
     
 
     def _map_recursive(self, data):

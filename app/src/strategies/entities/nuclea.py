@@ -14,7 +14,7 @@ class Nuclea(Entity):
 
 
     def set_data(self, data: Any) -> None:
-        self.data = data
+        self.actc_data = data
 
 
     def process_ret(self, actc_type: str, group: str, content: Any) -> Any:
@@ -50,7 +50,7 @@ class Nuclea(Entity):
         return errors
     
 
-    def convert_actc_content(self, content: Any) -> Any:
+    def convert_actc_content(self, actc_type: str, content: Any) -> Any:
         _actc = content.copy()
         if(actc_errors := self.find_actc_errors(content)):
             if(len(actc_errors) > 0):
@@ -58,8 +58,8 @@ class Nuclea(Entity):
         content = Utils().transform_json(content)
         return {
             'actc':         _actc,
-            'integracao':   Mapper(content, "mapper.json").map_keys(),
-            'fisico':       Mapper(content, "mapper.json").map_keys()
+            'integracao':   Mapper(content, "mapper.json").map(content),
+            'fisico':       Mapper(content, "mapper.json").map(content)
         }
 
 
@@ -68,18 +68,18 @@ class Nuclea(Entity):
     
     
     def log_output(self, total_groups: int, total_process: int) -> Any:
-        print(f"Total de portabilidades: {total_groups}, Processadas: {total_process}, Error: {total_groups - total_process}")
+        print(f"Total de Portabilidades: {total_groups}, Processadas: {total_process}, Erros: {total_groups - total_process}")
 
 
     def run(self, aws_client: object) -> Any:
         self.aws_client     = aws_client
-        if self.data:
-            data            = xmltodict.parse(self.data)
+        if self.actc_data:
+            data            = xmltodict.parse(self.actc_data)
             total_process   = 0
             total_groups    = 0
             for actc_type, group, content in self.extract_actc_data(data):
-                total_groups += 1
-                actc_proc = self.convert_actc_content(content)
+                total_groups    += 1
+                actc_proc       = self.convert_actc_content(actc_type, content)
                 if re.match(r"^ACTC.*(RET|4)$", actc_type):
                     self.process_ret(actc_type, group, actc_proc)
                 if self.process_actc(actc_type, group, actc_proc, total_groups):
