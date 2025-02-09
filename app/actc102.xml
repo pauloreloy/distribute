@@ -1,15 +1,15 @@
 <O7DOC>
 	<HeaderCTC>
-		<NomeArq>ACTC101RET_20250208_00001</NomeArq>
+		<NomeArq>ACTC102_20250208_00001</NomeArq>
 		<Versao>1.0</Versao>
 		<DtHrArq>20240701</DtHrArq>
 		<SeqArq>1</SeqArq>
 		<TpArq>1</TpArq>
 	</HeaderCTC>
-	<ACTC101RET>
-		<Grupo_ACTC101RET_PortlddRecs>
+	<ACTC102>
+		<Grupo_ACTC102_PortlddRecs>
 			<IdentdPartAdmdo>1234567891</IdentdPartAdmdo>
-			<NUPortlddCTC>9876543211</NUPortlddCTC>
+			<NUPortlddCTC>1</NUPortlddCTC>
 			<IdentdIFPropnt>5432167891</IdentdIFPropnt>
 			<Grupo_ACTC102_IdentdContrto>
 				<CodContrtoOr CodErro="ECTC321">CONTRATO123</CodContrtoOr>
@@ -35,6 +35,6 @@
 				<UFEndCartaPortldd>SP</UFEndCartaPortldd>
 				<CEPEndCartaPortldd>12345678</CEPEndCartaPortldd>
 			</Grupo_ACTC102_EndCartaPortldd>
-		</Grupo_ACTC101RET_PortlddRecs>
-	</ACTC101RET>
+		</Grupo_ACTC102_PortlddRecs>
+	</ACTC102>
 </O7DOC>

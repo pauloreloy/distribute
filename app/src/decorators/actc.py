@@ -24,8 +24,9 @@ def filter_actc_keys(func):
 
 
 def count_processing(func):
-    def wrapper(self, actc_proc):
-        result = func(self, actc_proc)
+    def wrapper(self, context, actc_data):
+        self.total_run += 1
+        result = func(self, context, actc_data)
         if result:
             self.total_processed += 1
         return result

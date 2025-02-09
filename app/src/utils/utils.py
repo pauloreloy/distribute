@@ -1,5 +1,7 @@
-from typing import Dict, Any
+
 import json
+from typing     import  Any
+from datetime   import date, timedelta
 
 
 class Utils:
@@ -39,3 +41,21 @@ class Utils:
 
     def log_output(self, message: dict) -> Any:
         print(json.dumps(message, indent=4))
+
+    
+    def carregar_feriados(self, caminho_json):
+        with open(caminho_json, "r", encoding="utf-8") as file:
+            feriados_str = json.load(file)
+        return {date.fromisoformat(d) for d in feriados_str}
+
+
+    def calcular_data_uteis(self, data_inicial, dias_uteis, caminho_json):
+        feriados = self.carregar_feriados(caminho_json)
+        data_inicial = date.fromisoformat(data_inicial)
+        contador = 0
+        nova_data = data_inicial
+        while contador < dias_uteis:
+            nova_data += timedelta(days=1)  # Avança um dia
+            if nova_data.weekday() < 5 and nova_data not in feriados:  # Seg-Sex e não feriado
+                contador += 1
+        return nova_data.strftime("%Y-%m-%d")

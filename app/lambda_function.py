@@ -3,7 +3,7 @@ from typing                     import Dict, Any
 from src.decorators.exceptions  import exception_decorator
 from src.classes.business       import Business
 from src.adapter.aws.aws        import AWS
-
+from src.utils.utils            import Utils
 
 aws = AWS()
 
@@ -21,6 +21,11 @@ def lambda_handler(event, context):
         
 
 if __name__ == "__main__":
+    #caminho_json = "feriados.json"
+    #data_inicial = "2025-02-21"  # Sexta-feira antes do Carnaval
+    #nova_data = Utils().calcular_data_uteis(data_inicial, 5, caminho_json)
+    #print(nova_data)  # Deve pular o Carnaval e contar apenas dias úteis
+    #exit()
     with open('event.json') as event_file:
         event = json.loads(event_file.read())
         lambda_handler(event, None)

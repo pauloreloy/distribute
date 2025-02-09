@@ -4,21 +4,15 @@ from typing                             import Dict, Any
 from src.strategies.entities.entity     import Entity
 from src.utils.mapper                   import Mapper
 from src.utils.utils                    import Utils
-from src.decorators.exceptions          import exception_decorator
-from src.decorators.actc                import find_actc_errors_decorator, filter_actc_keys, count_processing
+from src.decorators.actc                import find_actc_errors_decorator, filter_actc_keys
 
 
 class Nuclea(Entity):
 
 
     def __init__(self):
-        super().__init__("Nuclea")
-        self.total_processed = 0
-
-
-    def set_data(self, data: Dict[dict, Any]) -> None:
-        self.data = xmltodict.parse(data)
-
+        super().__init__("NUCLEA")
+        
 
     def find_actc_errors(self, content: dict, previous_key: str = None) -> list:
         errors = []
@@ -60,34 +54,13 @@ class Nuclea(Entity):
         }
 
 
-    @count_processing
-    @exception_decorator
-    def process_ret(self, actc_data: Dict[dict, list]) -> bool:
-        return True
-    
-
-    @count_processing
-    @exception_decorator
-    def process_actc(self, actc_data: Dict[dict, list]) -> bool:
-        return True
-
-
-    def run(self, aws_client: object) -> bool:
-        self.aws_client     = aws_client
-        if not self.data:
+    def run(self, context: object, aws_client: object, data: Dict[dict, Any]) -> bool:
+        if not data:
             return False
-        total_groups = 0
-        for header, actc_type, group, content in self.extract_actc_data(self.data):
-            total_groups    += 1
+        context.set_strategy("ACTC")
+        self.aws_client = aws_client
+        data            = xmltodict.parse(data)
+        for header, actc_type, group, content in self.extract_actc_data(data):
             actc_data       = self.convert_actc_content(header, actc_type, group, content)
-            if re.match(r"^ACTC.*(RET|4)$", actc_type):
-                self.process_ret(actc_data)
-            else:
-                self.process_actc(actc_data)
-        Utils().log_output({
-            "Arquivo":      header.get("HeaderCTC", {}).get("NomeArq", None),
-            "Total":        total_groups,
-            "Processadas":  self.total_processed,
-            "Erros":        total_groups - self.total_processed
-        })
+            context.run(context, self.aws_client, actc_data)
         return True

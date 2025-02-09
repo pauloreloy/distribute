@@ -19,19 +19,20 @@ class Business:
 
     def identify_entity(self, data: str, object_key: str) -> Any:
         if("O7DOC" in data and "ACTC" in data):
-            return self.create_strategy("nuclea", data)
+            return self.create_strategy("NUCLEA", data)
 
 
     def process_s3_event(self, event_record: Dict[dict, Any]) -> Any:
-        object_key  = event_record.get("s3").get("object").get("key")
-        bucket_name = event_record.get("s3").get("bucket").get("name")
-        data = self.aws_client.get_s3_object(bucket_name, object_key)
-        if data:
-            return self.identify_entity(data, object_key)
-    
+        bucket_name = event_record["s3"]["bucket"]["name"]
+        object_key  = event_record["s3"]["object"]["key"]
+        if object_key and bucket_name:
+            data = self.aws_client.get_s3_object(bucket_name, object_key)
+            if data:
+                return self.identify_entity(data, object_key)
+        return None
+
 
     def create_strategy(self, strategy: str, data: Any) -> Any:
         context = self.make_strategy(strategy)
         if context:
-            context.set_data(data)
-            return context.run(self.aws_client)
+            return context.run(context, self.aws_client, data)
