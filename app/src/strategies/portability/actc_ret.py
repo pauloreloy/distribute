@@ -2,7 +2,6 @@ from typing                                     import Dict, Any
 from src.strategies.portability.portability     import Portability
 
 
-
 class ACTC_RET(Portability):
 
 
