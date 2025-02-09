@@ -5,6 +5,7 @@ from src.classes.business       import Business
 from src.adapter.aws.aws        import AWS
 from src.utils.utils            import Utils
 
+
 aws = AWS()
 
 
@@ -12,6 +13,7 @@ aws = AWS()
 def validate_event(event_record: Dict[dict, Any]) -> Any:
     if event_record.get("eventSource") == 'aws:s3':
         return Business(aws).process_s3_event(event_record)
+
 
 
 def lambda_handler(event, context):
