@@ -15,12 +15,11 @@ def validate_event(event_record: Dict[dict, Any]) -> Any:
         return Business(aws).process_s3_event(event_record)
 
 
-
 def lambda_handler(event, context):
     if event.get("Records"):
         for event_record in event['Records']:
             validate_event(event_record)
-        
+
 
 if __name__ == "__main__":
     #caminho_json = "feriados.json"
