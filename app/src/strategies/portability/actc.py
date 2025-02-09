@@ -17,6 +17,11 @@ class ACTC(Portability):
     def set_data(self, data: Dict[dict, Any]) -> None:
         self.actc_data = data
 
+    
+    def calculate_expire_date(self, initial_date):
+        expire_date = Utils().calculate_business_days(initial_date, 5)
+        print(expire_date)
+
 
     @exception_decorator
     def process_ret(self, context, actc_data):
